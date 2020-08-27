@@ -15,16 +15,22 @@ use App\User;
 */
 
 Route::get('/', function () {
+    $user = $request->user();
     // $user = User::all();
-    // dd($user);
+    dd($user);
     // dd($user->hasRole('developer')); //will return true, if user has role
     // dd($user->givePermissionsTo('create-tasks'));// will return permission, if not null
     // dd($user->can('create-tasks')); // will return true, if user has permission
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    $user = $request->user();
+    dd($user);
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/seed', 'PermissionController@Seed');
